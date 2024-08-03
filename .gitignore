@@ -1,0 +1,4 @@
+src/__pycache__
+src/test.py
+notebooks/.ipynb_checkpoints
+notebooks/Generative_Adversarial_Networks[GANs]_with_Tensorflow.ipynb
