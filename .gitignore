@@ -2,3 +2,5 @@ src/__pycache__
 src/test.py
 notebooks/.ipynb_checkpoints
 notebooks/Generative_Adversarial_Networks[GANs]_with_Tensorflow.ipynb
+results/training_checkpoints_2024-08-02-04-25-33/models
+results/training_checkpoints_2024-08-02-06-49-20/models
