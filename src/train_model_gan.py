@@ -210,7 +210,7 @@ class ModelTrainer:
                     epoch, batch_size, noise_dim, generator, discriminator, image_batch)
             print(
                 f"Epoch {epoch+1}, Discriminator Loss: {discriminator_loss}, Generator Loss: {generator_loss}")
-            if epoch % 5 == 0:
+            if epoch % 5 == 0 or epoch == 0:
                 fig = self.generate_images(generator, noise_dim)
                 fig.savefig(os.path.join(saved_dir, "images",
                             f"image_at_epoch_{epoch+1}.png"))
