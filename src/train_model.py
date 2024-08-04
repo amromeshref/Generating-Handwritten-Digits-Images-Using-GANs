@@ -137,7 +137,20 @@ class ModelTrainer:
         loss = loss_real + loss_fake
         return loss
 
-    def train_step(self, epoch: int, batch_size: int, noise_dim: int, generator: Sequential, discriminator: Sequential, real_images_batch: np.ndarray):
+    def train_step(self, epoch: int, batch_size: int, noise_dim: int, generator: Sequential, discriminator: Sequential, real_images_batch: np.ndarray) -> tuple[tf.Tensor, tf.Tensor]:
+        """
+        Perform one training step
+        Args:
+            epoch: int, current epoch
+            batch_size: int, batch size
+            noise_dim: int, dimension of the noise vector
+            generator: tensorflow.keras.models.Sequential, generator model
+            discriminator: tensorflow.keras.models.Sequential, discriminator model
+            real_images_batch: np.ndarray, batch of real images
+        Returns:
+            discriminator_loss: tensor, discriminator loss
+            generator_loss: tensor, generator loss
+        """
         with tf.GradientTape() as gen_tape, tf.GradientTape() as disc_tape:
             # Generate a batch of fake images
             noise = tf.random.normal([batch_size, noise_dim])
