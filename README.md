@@ -98,7 +98,7 @@ ___
 
 To use the pre-trained models to generate images:
 
-### Using the Pretrained GAN Model
+#### Using the Pretrained GAN Model
 
 ```python
 from src.predict_model_gan import GANModelPredictor
@@ -114,7 +114,7 @@ images = predictor.generate_images(num_images)
 predictor.plot_images(images)
 ```
 
-### Using the Pretrained CGAN Model
+#### Using the Pretrained CGAN Model
 
 ```python
 from src.predict_model_cgan import CGANModelPredictor
