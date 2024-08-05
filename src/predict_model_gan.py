@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 
 
-class ModelPredictor:
+class GANModelPredictor:
     def __init__(self):
         self.generator, _ = self.load_models()
 
