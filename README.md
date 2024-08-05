@@ -13,6 +13,9 @@ generating handwritten digits. Through this project, I aimed to enhance my knowl
 1. [Training](#training)
 1. [Requirements](#requirements)
 1. [Installation](#installation)
+1. [Usage](#usage)
+
+___
 
 ## Project Overview
 
@@ -23,6 +26,9 @@ The GAN consists of a generator and a discriminator where the generator creates 
 
 3. **Training a CGAN Network**: Implement and train a CGAN network that generates handwritten digits based on given labels.
 The CGAN uses both noise and label information to produce digit images corresponding to specific classes.
+
+
+___
 
 ## Project Structure
 
@@ -40,6 +46,9 @@ Each image is 28x28 pixels in size. The dataset includes:
    - `src/predict_model_gan.py`: Script for generating and plotting images using the trained GAN model.
    - `src/predict_model_cgan.py`: Script for generating and plotting images using the trained CGAN model.
 
+___
+
+
 ## Training
 
 In this project, the GAN model was trained for 85 epochs, while the CGAN model was trained for 100 epochs. 
@@ -47,10 +56,16 @@ The results from these trainings are saved in the `results` directory.
 For potentially better results, you may consider training the models for more epochs.
 
 
+___
+
+
 ## Requirements
 - TensorFlow
 - NumPy
 - Matplotlib
+
+
+___
 
 
 ## Installation
@@ -77,14 +92,43 @@ For potentially better results, you may consider training the models for more ep
    python3 src/predict_model_cgan.py
    ```
 
-
+___
 
 ## Usage
 
-1. **Train GAN**: Execute `src/train_model_gan.py` to train the GAN model.
-2. **Train CGAN**: Execute `src/train_model_cgan.py` to train the CGAN model.
-3. **Generate Images with GAN**: Execute `src/predict_model_gan.py` to generate and visualize images using the trained GAN model.
-4. **Generate Images with CGAN**: Execute `src/predict_model_cgan.py` to generate and visualize images based on labels using the trained CGAN model.
+To use the pre-trained models to generate images:
+
+### Using the Pretrained GAN Model
+
+```python
+from src.predict_model_gan import GANModelPredictor
+
+# Initialize the predictor
+predictor = GANModelPredictor()
+
+# Generate images
+num_images = 25
+images = predictor.generate_images(num_images)
+
+# Plot generated images
+predictor.plot_images(images)
+```
+
+### Using the Pretrained CGAN Model
+
+```python
+from src.predict_model_cgan import CGANModelPredictor
+
+# Initialize the predictor
+predictor = CGANModelPredictor()
+
+# Generate images
+num_images = 25
+images, labels = predictor.generate_images(num_images)
+
+# Plot the generated images with the corresponding labels
+predictor.plot_images(images, labels)
+```
 
 
 
