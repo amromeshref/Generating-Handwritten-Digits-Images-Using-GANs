@@ -25,7 +25,6 @@ class ModelTrainerCGAN:
         self.generator_optimizer = tf.keras.optimizers.Adam(1e-4)
         self.discriminator_optimizer = tf.keras.optimizers.Adam(1e-4)
         self.cross_entropy = tf.keras.losses.BinaryCrossentropy(from_logits=True)
-        self.num_classes = 10
     
     def load_data(self) -> tuple[np.ndarray, np.ndarray]:
         """
