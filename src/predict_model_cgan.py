@@ -79,3 +79,8 @@ class CGANModelPredictor:
 
         plt.tight_layout()
         plt.show()
+
+if __name__ == "__main__":
+    predictor = CGANModelPredictor()
+    generated_images, labels = predictor.generate_images(16)
+    predictor.plot_images(generated_images, labels)
