@@ -57,3 +57,8 @@ class GANModelPredictor:
             plt.imshow(images[i, :, :, 0] * 127.5 + 127.5, cmap='gray')
             plt.axis('off')
         plt.show()
+
+if __name__ == "__main__":
+    predictor = GANModelPredictor()
+    generated_images = predictor.generate_images(16)
+    predictor.plot_images(generated_images)
