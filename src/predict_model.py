@@ -24,10 +24,10 @@ class ModelPredictor:
             discriminator: tensorflow.keras.models.Sequential, discriminator model
         """
         generator_model_path = os.path.join(
-            REPO_DIR_PATH, "models", "best-models", "generator.h5")
+            REPO_DIR_PATH, "models", "best-models", "generator_gan.h5")
         generator = tf.keras.models.load_model(generator_model_path)
         discriminator_model_path = os.path.join(
-            REPO_DIR_PATH, "models", "best-models", "discriminator.h5")
+            REPO_DIR_PATH, "models", "best-models", "discriminator_gan.h5")
         discriminator = tf.keras.models.load_model(discriminator_model_path)
         return generator, discriminator
 
