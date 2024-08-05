@@ -137,11 +137,10 @@ class ModelTrainer:
         loss = loss_real + loss_fake
         return loss
 
-    def train_step(self, epoch: int, batch_size: int, noise_dim: int, generator: Sequential, discriminator: Sequential, real_images_batch: np.ndarray) -> tuple[tf.Tensor, tf.Tensor]:
+    def train_step(self, batch_size: int, noise_dim: int, generator: Sequential, discriminator: Sequential, real_images_batch: np.ndarray) -> tuple[tf.Tensor, tf.Tensor]:
         """
         Perform one training step
         Args:
-            epoch: int, current epoch
             batch_size: int, batch size
             noise_dim: int, dimension of the noise vector
             generator: tensorflow.keras.models.Sequential, generator model
@@ -207,7 +206,7 @@ class ModelTrainer:
             generator_loss = 0
             for image_batch in dataset:
                 discriminator_loss, generator_loss = self.train_step(
-                    epoch, batch_size, noise_dim, generator, discriminator, image_batch)
+                    batch_size, noise_dim, generator, discriminator, image_batch)
             print(
                 f"Epoch {epoch+1}, Discriminator Loss: {discriminator_loss}, Generator Loss: {generator_loss}")
             if epoch % 5 == 0 or epoch == 0:
