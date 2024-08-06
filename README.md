@@ -130,5 +130,9 @@ images, labels = predictor.generate_images(num_images)
 predictor.plot_images(images, labels)
 ```
 
+___
+
+## Other
+A good [playlist](#https://youtube.com/playlist?list=PLZsOBAyNTZwboR4_xj-n3K6XBTweC4YVD&si=vPdneLIHJJK2vd2Z) I watched to learn GANs.
 
 
