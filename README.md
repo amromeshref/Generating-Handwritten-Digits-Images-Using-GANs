@@ -118,13 +118,17 @@ predictor.plot_images(images)
 
 ```python
 from src.predict_model_cgan import CGANModelPredictor
+import tensorflow as tf
 
 # Initialize the predictor
 predictor = CGANModelPredictor()
 
-# Generate images
+# Create random labels
 num_images = 25
-images, labels = predictor.generate_images(num_images)
+labels = tf.random.uniform([num_images], minval=0, maxval=10, dtype=tf.int32)
+
+# Generate images
+images = predictor.generate_images(num_images, labels)
 
 # Plot the generated images with the corresponding labels
 predictor.plot_images(images, labels)
