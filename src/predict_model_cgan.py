@@ -35,20 +35,18 @@ class CGANModelPredictor:
         discriminator = tf.keras.models.load_model(discriminator_model_path)
         return generator, discriminator
 
-    def generate_images(self, num_images: int) -> tuple[tf.Tensor, tf.Tensor]:
+    def generate_images(self, num_images: int, labels: tf.Tensor) -> tuple[tf.Tensor, tf.Tensor]:
         """
         Generate images using generator model
         Args:
             num_images: int, number of images to generate
+            labels: tf.Tensor, labels to generate images
         Returns:
             generated_images: tf.Tensor, generated images
-            labels: tf.Tensor, labels of generated images
         """
         noise = tf.random.normal([num_images, NOISE_DIM])
-        labels = tf.random.uniform(
-            [num_images], minval=0, maxval=NUM_CLASSES, dtype=tf.int32)
         generated_images = self.generator([noise, labels], training=False)
-        return generated_images, labels
+        return generated_images
 
     def plot_images(self, images: tf.Tensor, labels: tf.Tensor) -> None:
         """
@@ -82,5 +80,8 @@ class CGANModelPredictor:
 
 if __name__ == "__main__":
     predictor = CGANModelPredictor()
-    generated_images, labels = predictor.generate_images(16)
+    num_images = 25
+    labels = tf.random.uniform(
+            [num_images], minval=0, maxval=NUM_CLASSES, dtype=tf.int32)
+    generated_images = predictor.generate_images(num_images, labels)
     predictor.plot_images(generated_images, labels)
